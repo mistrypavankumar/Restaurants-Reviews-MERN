@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
-  const login = () => {};
+const Login = (props) => {
+  let navigate = useNavigate();
+  const initialUserState = {
+    name: "",
+    id: "",
+  };
+  const [user, setUser] = useState(initialUserState);
 
-  const handleInputChange = ({ login }) => {};
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const login = () => {
+    props.login(user);
+    navigate("/restaurants");
+  };
+
   return (
     <div
       className="m-auto w-50 bg-dark shadow-lg rounded d-flex align-items-center justify-content-center"
@@ -21,7 +36,7 @@ const Login = () => {
               id="name"
               required
               placeholder="Enter your username"
-              // value={user.name}
+              value={user.name}
               onChange={handleInputChange}
               name="name"
             />
@@ -37,7 +52,7 @@ const Login = () => {
               id="id"
               required
               placeholder="Enter your password"
-              // value={user.id}
+              value={user.id}
               onChange={handleInputChange}
               name="id"
             />

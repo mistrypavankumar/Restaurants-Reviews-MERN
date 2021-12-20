@@ -50,13 +50,23 @@ const App = () => {
 
       <div className="container mt-3">
         <Routes>
+          <Route
+            path="/"
+            element={
+              <main style={{ padding: "1rem" }}>
+                <p>Welcome to Restaurant Review system!</p>
+              </main>
+            }
+          />
+          <Route path="/login" element={<Login login={login} />} />
           <Route exact path={"/restaurants"} element={<RestaurantsList />} />
+          <Route path="/restaurants/:id" element={<Restaurant user={user} />} />
+          <Route path="/edit" element={<Restaurant user={user} />} />
+
           <Route
             path="/restaurants/:id/review"
             element={<AddReview user={user} />}
           />
-          <Route path="/restaurants/:id" element={<Restaurant user={user} />} />
-          <Route path="/login" element={<Login login={login} />} />
 
           <Route
             path="*"

@@ -56,11 +56,11 @@ class RestaurantsController {
 
   static async apiGetRestaurantCuisines(req, res, next) {
     try {
-      cusines = await RestaurantsData.getCuisines();
+      let cuisines = await RestaurantsData.getCuisines();
       res.json(cuisines);
-    } catch (err) {
-      console.log(`api, ${err}`);
-      res.status(505).json({ error: err });
+    } catch (e) {
+      console.log(`api, ${e}`);
+      res.status(500).json({ error: e });
     }
   }
 }

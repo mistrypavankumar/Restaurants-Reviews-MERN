@@ -113,8 +113,8 @@ class RestaurantsData {
     try {
       cuisines = await restaurants.distinct("cuisine");
       return cuisines;
-    } catch (err) {
-      console.error(`Unable to get cuisines: ${err}`);
+    } catch (e) {
+      console.error(`Unable to get cuisines, ${e}`);
       return cuisines;
     }
   }
